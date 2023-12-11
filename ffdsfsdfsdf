@@ -1,0 +1,12 @@
+=> 
+[32m#<PackageSerializer:0x000002106e063850[0m
+ @fieldsets[32m=[0m{},
+ @params[32m=[0m{},
+ @resource[32m=[0m
+  [32m#<Package:0x00000210713f6578[0m
+   id: [34m[1m1[0m,
+   name: [31m[1m"[0m[31mBasic Package[0m[31m[1m"[0m,
+   description: [31m[1m"[0m[31mIncludes basic amenities[0m[31m[1m"[0m,
+   price: [35m[1m0.5e2[0m,
+   created_at: Sat, 09 Dec 2023 10:28:49.539668000 UTC +00:00,
+   updated_at: Sat, 09 Dec 2023 10:28:49.539668000 UTC +00:00[32m>[0m[32m>[0m
