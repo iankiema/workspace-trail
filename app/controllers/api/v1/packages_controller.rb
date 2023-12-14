@@ -2,6 +2,7 @@ module Api
   module V1
     class PackagesController < ApplicationController
       before_action :set_package, only: [:show, :update, :destroy]
+      before_action :check_admin, only: [:create, :destroy]
 
       def index
         packages = Package.all
@@ -44,6 +45,12 @@ module Api
       end
 
       private
+
+      def check_admin
+        unless current_user&.admin?
+          render json: { error: 'Unauthorized' }, status: :unauthorized
+        end
+      end
 
       def package_params
         params.require(:package).permit(:name, :description, :image_url, :slug, :price)
