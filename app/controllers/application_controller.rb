@@ -1,5 +1,16 @@
 class ApplicationController < ActionController::API
-  include ActionController::Cookies
-  protect_from_forgery with: :exception
-  skip_before_action :verify_authenticity_token, if: -> { request.format.json? }
+  attr_reader :current_user
+
+  private
+
+  def authenticate_token!
+    payload = JsonWebToken.decode(auth_token)
+    @current_user = User.find(payload['sub'])
+  rescue JWT::DecodeError
+    render json: { error: 'Invalid auth token' }, status: :unauthorized
+  end
+
+  def auth_token
+    @auth_token ||= request.headers.fetch('authorization', '').split.last
+  end
 end
