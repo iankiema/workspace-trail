@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       resources :reservations, only: [:create, :destroy]
       get 'packages/:package_slug/reservations', to: 'reservations#index'
       delete 'reservations/:id', to: 'reservations#destroy'
+      get '/reservations', to: 'reservations#reservations'
     end
   end
 
